@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jify_flutter_app/src/blocs/search_image_bloc.dart';
 import 'package:jify_flutter_app/src/models/image_search_response.dart';
+import 'package:jify_flutter_app/src/ui/widgets/image_view_card_item.dart';
 
 class ImageSearchDelegate extends SearchDelegate {
   final SearchBloc searchBloc = SearchBloc();
@@ -39,8 +40,8 @@ class ImageSearchDelegate extends SearchDelegate {
     if (query.length < 2) {
       return const Center(
           child: Text(
-            "Search term must be longer than two letters.",
-          ));
+        "Search term must be longer than two letters.",
+      ));
     }
 
     searchBloc.searchImage(query: query);
@@ -61,19 +62,20 @@ class ImageSearchDelegate extends SearchDelegate {
               );
             }
             if (snapshot.data!.hits.isNotEmpty) {
-              return Container(child: ListView.builder(
-                  itemCount: snapshot.data!.hits.length,
-                  itemBuilder:(context, index) {
-                    return Card(
-                      child: Image.network(snapshot.data!.hits[index].webformatUrl),
-                    );
-                  } ),);
+              return Container(
+                margin: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 8.0),
+                child: ListView.builder(
+                    itemCount: snapshot.data!.hits.length,
+                    itemBuilder: (context, index) {
+                      return ImageViewCard(
+                          previewImageUrl: snapshot.data!.hits[index].webformatUrl,
+                          largerImageUrl: snapshot.data!.hits[index].largeImageUrl);
+                    }),
+              );
             }
           }
-          return Container(
-            child: const Center(
-              child: CircularProgressIndicator(),
-            ),
+          return const Center(
+            child: CircularProgressIndicator(),
           );
         },
       ),
@@ -85,8 +87,8 @@ class ImageSearchDelegate extends SearchDelegate {
     if (query.length < 2) {
       return const Center(
           child: Text(
-            "Search term must be longer than two letters.",
-          ));
+        "Search term must be longer than two letters.",
+      ));
     }
 
     searchBloc.searchImage(query: query);
@@ -107,19 +109,20 @@ class ImageSearchDelegate extends SearchDelegate {
               );
             }
             if (snapshot.data!.hits.isNotEmpty) {
-              return Container(child: ListView.builder(
-                  itemCount: snapshot.data!.hits.length,
-                  itemBuilder:(context, index) {
-                    return Card(
-                      child: Image.network(snapshot.data!.hits[index].webformatUrl),
-                    );
-                  } ),);
+              return Container(
+                margin: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 8.0),
+                child: ListView.builder(
+                    itemCount: snapshot.data!.hits.length,
+                    itemBuilder: (context, index) {
+                      return ImageViewCard(
+                          previewImageUrl: snapshot.data!.hits[index].webformatUrl,
+                          largerImageUrl: snapshot.data!.hits[index].largeImageUrl);
+                    }),
+              );
             }
           }
-          return Container(
-            child: const Center(
-              child: CircularProgressIndicator(),
-            ),
+          return const Center(
+            child: CircularProgressIndicator(),
           );
         },
       ),

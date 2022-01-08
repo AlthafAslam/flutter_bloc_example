@@ -7,14 +7,14 @@ import 'package:flutter/rendering.dart';
 import 'package:jify_flutter_app/src/managers/state/response_state.dart';
 import 'package:overlay_support/overlay_support.dart';
 
-enum NetworkStatus { Online, Offline }
+enum NetworkStatus {  Online, Offline }
 
 class NetworkManager {
   StreamController<NetworkStatus> networkStatusController =
   StreamController<NetworkStatus>();
 
-  late NetworkStatus _networkStatus;
-  late Connectivity _connectivity;
+   late NetworkStatus _networkStatus;
+   late Connectivity _connectivity;
 
   NetworkManager() {
     _connectivity = Connectivity();
@@ -32,14 +32,14 @@ class NetworkManager {
           return Container(
             color: Color.lerp(Colors.transparent, Colors.black54, t),
             child: FractionalTranslation(
-              translation: Offset(0.5,1),
+              translation: const Offset(0.5,1),
               child: AlertDialog(
-                title: Text('No internet!'),
-                content: Text(
+                title: const Text('No internet!'),
+                content: const Text(
                     'You\'re not connected to Internet. Please check your connectivity.'),
                 actions: <Widget>[
                   TextButton(
-                    child: Text("OKAY"),
+                    child: const Text("OKAY"),
                     onPressed: () {
                       OverlaySupportEntry.of(context)!.dismiss();
                     },
@@ -48,7 +48,7 @@ class NetworkManager {
               ),
             ),
           );
-        }, key: Key('noInternet'), duration: Duration.zero);
+        }, key: const Key('noInternet'), duration: Duration.zero);
       }
     });
 

@@ -35,16 +35,12 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: const <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'Please enter your search keyword in the above search box',
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        tooltip: 'Increment',
-        onPressed: () {},
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
